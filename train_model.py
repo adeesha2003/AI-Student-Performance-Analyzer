@@ -25,6 +25,14 @@ X_train, X_test, y_train, y_test = train_test_split(
 model = DecisionTreeClassifier(random_state=42)
 model.fit(X_train, y_train)
 
+importance = model.feature_importances_
+
+print("\nFeature Importance")
+print("=" * 40)
+
+for feature, score in zip(X.columns, importance):
+    print(f"{feature}: {score:.4f}")
+
 plt.figure(figsize=(12, 8))
 plot_tree(
     model,
@@ -66,3 +74,6 @@ new_student = pd.DataFrame({
 prediction = model.predict(new_student)
 
 print("\nPrediction:", prediction[0])
+
+probabilities = model.predict_proba(new_student)
+print(f"Confidence: {probabilities.max() * 100:.2f}%")
