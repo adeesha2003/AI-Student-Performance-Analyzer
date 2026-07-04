@@ -2,6 +2,8 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score
+import matplotlib.pyplot as plt
+from sklearn.tree import plot_tree
 
 data = pd.read_csv("students.csv")
 
@@ -22,6 +24,16 @@ X_train, X_test, y_train, y_test = train_test_split(
 
 model = DecisionTreeClassifier(random_state=42)
 model.fit(X_train, y_train)
+
+plt.figure(figsize=(12, 8))
+plot_tree(
+    model,
+    feature_names=X.columns,
+    class_names=model.classes_,
+    filled=True,
+)
+plt.show()
+
 predictions = model.predict(X_test)
 
 accuracy = accuracy_score(y_test, predictions)
