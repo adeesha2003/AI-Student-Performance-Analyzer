@@ -26,7 +26,7 @@ def calculate_status(grade):
 # Create CSV file if it doesn't exist
 if not os.path.exists("students.csv"):
     file = open("students.csv", "w")
-    file.write("Name,Marks,Grade,Status\n")
+    file.write("Name,Attendance,Assignment,Quiz,Marks,Grade,Status\n")
     file.close()
 
 while True:
@@ -40,6 +40,31 @@ while True:
             break
         else:
             print("Invalid marks. Please enter a value between 0 and 100.")
+    
+    # Get student attendance
+    while True:
+        attendance = int(input("Enter your attendance (%): "))
+        if 0 <= attendance <= 100:
+            break
+        else:
+            print("Invalid attendance. Please enter a value between 0 and 100.")
+
+    # Get student assignment score
+    while True:
+        assignment = int(input("Enter your assignment marks: "))
+        if 0 <= assignment <= 100:
+            break
+        else:
+            print("Invalid assignment marks. Please enter a value between 0 and 100.")
+
+    # Get student quiz score
+    while True:
+        quiz = int(input("Enter quiz marks: "))
+        if 0 <= quiz <= 100:
+            break
+        else:
+            print("Invalid quiz marks. Please enter a value between 0 and 100.")
+            
 
     #Calculate grade and status
     grade = calculate_grade(marks)
@@ -54,9 +79,8 @@ while True:
     print("Grade:", grade)
     print("Status:", status)
 
-    file = open("students.csv", "a")
-    file.write(f"{name},{marks},{grade},{status}\n")
-    file.close()
+    with open("students.csv", "a") as file:
+        file.write(f"{name},{attendance},{assignment},{quiz},{marks},{grade},{status}\n")
 
     # Ask user to continue
     choice = input("\nDo you want to add another student? (y/n): ")
