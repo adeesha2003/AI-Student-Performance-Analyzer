@@ -35,7 +35,7 @@ AI-Student-Performance-Analyzer/
 
 ├── main.py
 
-├── analyze_data.py
+├── analysis.py
 
 ├── train_model.py
 
@@ -64,7 +64,7 @@ python main.py
 3. Analyze the dataset
 
 ```
-python analyze_data.py
+python analysis.py
 ```
 
 4. Train the Machine Learning model
