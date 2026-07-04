@@ -1,10 +1,9 @@
 import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.metrics import accuracy_score
 import matplotlib.pyplot as plt
-from sklearn.tree import plot_tree
-from sklearn.metrics import confusion_matrix
+
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier, plot_tree
+from sklearn.metrics import accuracy_score, confusion_matrix
 
 data = pd.read_csv("students.csv")
 
