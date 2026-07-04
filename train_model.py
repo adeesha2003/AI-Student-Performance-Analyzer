@@ -4,6 +4,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score
 import matplotlib.pyplot as plt
 from sklearn.tree import plot_tree
+from sklearn.metrics import confusion_matrix
 
 data = pd.read_csv("students.csv")
 
@@ -53,6 +54,13 @@ print("\nPredicted:")
 print(predictions)
 
 print(f"\nAccuracy: {accuracy * 100:.2f}%")
+
+cm = confusion_matrix(y_test, predictions, labels=["Fail", "Pass"])
+
+print("\nConfusion Matrix:")
+print("=" * 40)
+print(cm)
+print("Labels: [Fail, Pass]")
 
 print("Training Data:", len(X_train))
 print("Testing Data:", len(X_test))
